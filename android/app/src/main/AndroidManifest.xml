@@ -3,6 +3,24 @@
         android:label="cute_hamong"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- 카카오 로그인 -->
+        <meta-data
+        android:name="com.kakao.sdk.AppKey"
+        android:value="361236e911593a4582642984d1cafbd9"/>
+    <activity
+        android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+        android:launchMode="singleTask"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:configChanges="orientation|screenSize|keyboardHidden"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="kakao361236e911593a4582642984d1cafbd9"/>
+        </intent-filter>
+    </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
