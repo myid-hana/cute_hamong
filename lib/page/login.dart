@@ -1,6 +1,7 @@
 import 'package:cute_hamong/components/login_button.dart';
 import 'package:cute_hamong/style/color.dart';
 import 'package:flutter/material.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -30,7 +31,15 @@ class LoginPage extends StatelessWidget {
               text: '카카오톡으로 로그인하기',
               image: 'lib/assets/images/kakaotalk.png',
               backgroundColor: AppColors.kakaoYellow,
-              onPressed: () {},
+              onPressed: () async {
+                try {
+                  OAuthToken token =
+                      await UserApi.instance.loginWithKakaoTalk();
+                  print('카카오계정으로 로그인 성공 ${token.accessToken}');
+                } catch (error) {
+                  print('카카오계정으로 로그인 실패 $error');
+                }
+              },
             ),
             const SizedBox(height: 10),
             LoginButton(
