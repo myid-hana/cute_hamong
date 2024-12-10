@@ -31,6 +31,24 @@ class LoginPage extends StatelessWidget {
     print('로그인 성공 ${user!.displayName}');
   }
 
+  Future<void> signInWithKakao() async {
+    try {
+      OAuthToken token = await UserApi.instance.loginWithKakaoTalk(); // 카카오 로그인
+      var provider = OAuthProvider('oidc.kakao_login'); // 제공업체 id
+      var kakaocredential = provider.credential(
+        idToken: token.idToken,
+        // 카카오 로그인에서 발급된 idToken(카카오 설정에서 OpenID Connect가 활성화 되어있어야함)
+        accessToken: token.accessToken, // 카카오 로그인에서 발급된 accessToken
+      );
+      UserCredential credential =
+          await FirebaseAuth.instance.signInWithCredential(kakaocredential);
+      final user = credential.user;
+      print('로그인 성공 ${user!.displayName}');
+    } catch (error) {
+      print('카카오계정으로 로그인 실패 $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,15 +74,7 @@ class LoginPage extends StatelessWidget {
               text: '카카오톡으로 로그인하기',
               image: 'lib/assets/images/kakaotalk.png',
               backgroundColor: AppColors.kakaoYellow,
-              onPressed: () async {
-                try {
-                  OAuthToken token =
-                      await UserApi.instance.loginWithKakaoTalk();
-                  print('카카오계정으로 로그인 성공 ${token.accessToken}');
-                } catch (error) {
-                  print('카카오계정으로 로그인 실패 $error');
-                }
-              },
+              onPressed: () => signInWithKakao(),
             ),
             const SizedBox(height: 10),
             LoginButton(
