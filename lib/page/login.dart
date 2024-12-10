@@ -1,6 +1,7 @@
 import 'package:cute_hamong/components/login_button.dart';
 import 'package:cute_hamong/style/color.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 class LoginPage extends StatelessWidget {
@@ -46,7 +47,15 @@ class LoginPage extends StatelessWidget {
               text: '구글로 로그인하기',
               image: 'lib/assets/images/google.png',
               backgroundColor: Colors.white,
-              onPressed: () {},
+              onPressed: () async {
+                GoogleSignIn googleSignIn = GoogleSignIn();
+                GoogleSignInAccount? account = await googleSignIn.signIn();
+                if (account == null) {
+                  print('구글계정으로 로그인 실패');
+                  return;
+                }
+                print('구글계정으로 로그인 성공 ${account!.email}');
+              },
             ),
           ],
         ),
