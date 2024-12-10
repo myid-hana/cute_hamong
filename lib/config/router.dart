@@ -1,5 +1,5 @@
 import 'package:cute_hamong/page/home.dart';
-import 'package:cute_hamong/page/login.dart';
+import 'package:cute_hamong/page/login/login.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(

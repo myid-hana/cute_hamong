@@ -41,6 +41,8 @@ dependencies:
   go_router: ^14.6.0
   kakao_flutter_sdk_user: ^1.9.6
   google_sign_in: ^6.2.2
+  carousel_slider: ^5.0.0
+  smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
   flutter_test:
@@ -95,9 +97,9 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_native_splash:
   color: '#023047'
-  image: lib/assets/images/splash.png
+  image: lib/assets/images/login_0.png
   web: false
   android_12:
     color: '#023047'
-    image: lib/assets/images/splash.png
+    image: lib/assets/images/login_0.png
     web: false

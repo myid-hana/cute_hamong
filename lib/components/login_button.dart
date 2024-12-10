@@ -24,6 +24,9 @@ class LoginButton extends StatelessWidget {
         foregroundColor: AppColors.black,
         textStyle: Theme.of(context).textTheme.bodyMedium,
         maximumSize: const Size(300, 50),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

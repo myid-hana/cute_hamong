@@ -1,4 +1,5 @@
 import 'package:cute_hamong/components/login_button.dart';
+import 'package:cute_hamong/page/login/image_slider.dart';
 import 'package:cute_hamong/style/color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -33,12 +34,11 @@ class LoginPage extends StatelessWidget {
 
   Future<void> signInWithKakao() async {
     try {
-      OAuthToken token = await UserApi.instance.loginWithKakaoTalk(); // 카카오 로그인
-      var provider = OAuthProvider('oidc.kakao_login'); // 제공업체 id
+      OAuthToken token = await UserApi.instance.loginWithKakaoTalk();
+      var provider = OAuthProvider('oidc.kakao_login');
       var kakaocredential = provider.credential(
         idToken: token.idToken,
-        // 카카오 로그인에서 발급된 idToken(카카오 설정에서 OpenID Connect가 활성화 되어있어야함)
-        accessToken: token.accessToken, // 카카오 로그인에서 발급된 accessToken
+        accessToken: token.accessToken,
       );
       UserCredential credential =
           await FirebaseAuth.instance.signInWithCredential(kakaocredential);
@@ -56,20 +56,8 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'lib/assets/images/splash.png',
-              width: 300,
-              height: 300,
-              fit: BoxFit.contain,
-            ),
-            Text(
-              '큐트하몽',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .copyWith(color: AppColors.gray500),
-            ),
-            const SizedBox(height: 20),
+            const LoginImageSlider(),
+            const SizedBox(height: 70),
             LoginButton(
               text: '카카오톡으로 로그인하기',
               image: 'lib/assets/images/kakaotalk.png',
