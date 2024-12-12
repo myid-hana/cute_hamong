@@ -3,6 +3,7 @@ import 'package:cute_hamong/config/router.dart';
 import 'package:cute_hamong/style/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'firebase_options.dart';
 
@@ -19,7 +20,7 @@ void main() {
     );
   }, (_, stackTrace) {});
 
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
