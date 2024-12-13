@@ -1,7 +1,7 @@
 import 'package:cute_hamong/components/progress_bar.dart';
-import 'package:cute_hamong/page/login/google_login_button.dart';
-import 'package:cute_hamong/page/login/image_slider.dart';
-import 'package:cute_hamong/page/login/kakao_login_button.dart';
+import 'package:cute_hamong/page/login/widgets/google_login_button.dart';
+import 'package:cute_hamong/page/login/widgets/image_slider.dart';
+import 'package:cute_hamong/page/login/widgets/kakao_login_button.dart';
 import 'package:cute_hamong/state/login.dart';
 import 'package:cute_hamong/style/color.dart';
 import 'package:flutter/material.dart';
